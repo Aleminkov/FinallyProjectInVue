@@ -9,15 +9,31 @@ import LoginView from "./components/LoginView";
 import RegistrationView from "./components/RegistrationView";
 
 const routes = [
-  { path: "/", name: "Home", component: HomeView },
-  { path: "/chat", name: "Chat", component: ChatView },
-  { path: "/review", name: "Review", component: ReviewView },
+  {
+    path: "/",
+    name: "Home",
+    component: HomeView,
+  },
+  {
+    path: "/chat",
+    name: "Chat",
+    component: ChatView,
+  },
+  {
+    path: "/review",
+    name: "Review",
+    component: ReviewView,
+  },
   {
     path: "/auth",
     name: "Auth",
     component: AuthView,
     children: [
-      { path: "/login", name: "LoginView", component: LoginView },
+      {
+        path: "/login",
+        name: "LoginView",
+        component: LoginView,
+      },
       {
         path: "/registration",
         name: "RegistrationView",

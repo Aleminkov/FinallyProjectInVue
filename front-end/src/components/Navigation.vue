@@ -34,5 +34,6 @@ nav {
   justify-content: space-around;
   width: 1200px;
   margin: auto;
+  margin-top: 20px;
 }
 </style>
