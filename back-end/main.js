@@ -13,7 +13,7 @@ app.use('/api', routers);
 
 const start = async () => {
   try {
-    Database.start()
+    await Database.start()
     app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
   } catch (error) {
     console.log(error);
