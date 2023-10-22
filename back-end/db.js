@@ -16,6 +16,7 @@ class Database {
       db.run(startCommand);
       db.run(startCommand2);
       db.run(startCommand3);
+      console.log('База данных подключена.');
     } catch (error) {
       console.log(error);
     }

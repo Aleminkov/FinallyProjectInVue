@@ -15,16 +15,34 @@
       style="text-decoration: none; color: black"
       >Отзывы</router-link
     >
-    <router-link
-      :to="{ name: 'LoginView' }"
-      style="text-decoration: none; color: black"
-      >Войти</router-link
-    >
+    <div v-if="!user">
+      <router-link
+        :to="{ name: 'LoginView' }"
+        style="text-decoration: none; color: black"
+        >Войти</router-link
+      >
+    </div>
+    <div v-else @click="logout">Выйти</div>
   </nav>
 </template>
 
 <script>
-export default { name: "NavigationView" };
+export default {
+  name: "NavigationView",
+  data() {
+    return {
+      user:''
+    };
+  },
+  computed(){
+    this.user = localStorage.getItem('user')
+  },
+  methods: {
+    logout(){
+      localStorage.removeItem('user')
+    }
+  },
+};
 </script>
 
 <style scoped>

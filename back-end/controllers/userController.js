@@ -8,31 +8,40 @@ class userController {
     const find = await findUser(email, password);
 
     if (!find) {
-      return next(ApiError.interval("Не верный пароль или email"));
+      return next(ApiError.interval("Не верный пароль или email!"));
     }
 
-    return res.json(true);
+    return res.json({
+      message: "",
+      result: true,
+    });
   }
 
   async registration(req, res, next) {
     const { name, email, password } = req.body;
 
     const findEmail = await checkEmail(email);
-    if (findEmail) {
+    
+    if (findEmail === "") {
       return next(
-        ApiError.badRequest("Пользователь с таким email уже существует")
+        ApiError.badRequest("Пользователь с таким email уже существует!")
       );
     }
 
     const findName = await checkUser(name);
-    if (findName) {
+
+    if (findName === "") {
       return next(
         ApiError.badRequest("Пользователь с таким именем уже существует")
       );
     }
 
-    await createUser(name, email, password);
-    return res.json(true);
+    const creatUser = await createUser(name, email, password);
+    console.log(creatUser);
+    return res.json({
+      message: "",
+      result: true,
+    });
   }
 }
 

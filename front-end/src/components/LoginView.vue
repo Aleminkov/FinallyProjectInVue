@@ -1,16 +1,22 @@
 <template>
-  <form @submit.prevent>
-    <h3>{{ msg }}</h3>
-    <input type="email" placeholder="Введите email" v-model="email" />
+  <div v-if="!user">
+    <form @submit.prevent>
+      <h3>{{ msg }}</h3>
+      <input type="email" placeholder="Введите email" v-model="email" />
 
-    <input type="password" placeholder="Введите пароль" v-model="password" />
+      <input type="password" placeholder="Введите пароль" v-model="password" />
 
-    <button @click="login">Войти</button>
-  </form>
+      <button @click="login">Войти</button>
+    </form>
 
-  <router-link :to="{ name: 'RegistrationView' }"
-    >Зарегестрироваться</router-link
-  >
+    <router-link :to="{ name: 'RegistrationView' }"
+      >Зарегестрироваться</router-link
+    >
+  </div>
+
+  <div v-else>
+    <h1>Вы вошли</h1>
+  </div>
 </template>
 
 <script>
@@ -20,7 +26,11 @@ export default {
       email: "",
       password: "",
       msg: "",
+      user: "",
     };
+  },
+  computed() {
+    this.user = localStorage.getItem("user");
   },
   methods: {
     check() {
@@ -36,9 +46,11 @@ export default {
         this.msg = "Поле с паролем не должно быть пустым!";
 
         return false;
-      } else if (this.email.includes("@") || this.email.includes(".com")) {
+      } else if (
+        this.email.indexOf("@") === -1 ||
+        this.email.indexOf(".com") === -1
+      ) {
         this.msg = "У вас введен не email!";
-
         return false;
       }
 
@@ -68,10 +80,9 @@ export default {
       })
         .then((res) => res.json())
         .then((res) => {
-          if (!res.result) {
-            return (this.msg = res.msg);
+          if (res.message) {
+            return (this.msg = res.message);
           }
-          localStorage.setItem("user", res.name);
         });
     },
   },

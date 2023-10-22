@@ -20,7 +20,7 @@ const startCommand3 = `CREATE TABLE IF NOT EXISTS chat (
 
 const findUserCommand = `Select * FROM users WHERE email = ? AND password = ?`;
 
-const createUserCommand = `INSERT INTO users(name,email,password) VALUES(?,?,?)`;
+const createUserCommand = `INSERT INTO users(name, email, password) VALUES(?, ?, ?)`;
 
 const findEmailCommand = `Select * FROM users WHERE email = ?`;
 
