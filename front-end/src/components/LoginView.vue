@@ -15,7 +15,7 @@
   </div>
 
   <div v-else>
-    <h1>Вы вошли</h1>
+    <h1>Вы уже вошли</h1>
   </div>
 </template>
 
@@ -80,9 +80,17 @@ export default {
       })
         .then((res) => res.json())
         .then((res) => {
-          if (res.message) {
+          console.log(res);
+
+          if (res.result === false) {
             return (this.msg = res.message);
           }
+          localStorage.setItem("user", res.name);
+
+          this.password = "";
+          this.email = "";
+
+          location.reload();
         });
     },
   },

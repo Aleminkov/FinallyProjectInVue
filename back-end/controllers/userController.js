@@ -2,6 +2,8 @@ const ApiError = require("../Error/ApiError");
 const { findUser, checkEmail, checkUser, createUser } = require("../db");
 
 class userController {
+  
+  //Для входа уже зарегестрированных пользователей
   async login(req, res, next) {
     const { email, password } = req.body;
 
@@ -14,9 +16,11 @@ class userController {
     return res.json({
       message: "",
       result: true,
+      name: find.name,
     });
   }
 
+  //Регистрация пользователя
   async registration(req, res, next) {
     const { name, email, password } = req.body;
 

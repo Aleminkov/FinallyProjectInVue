@@ -1,7 +1,25 @@
 <template>
-    <div>
-        
-    </div>
+  <div v-if="user">
+    <AddReviewView></AddReviewView>
+  </div>
+  <div v-else><h2>Чтобы написать отзыв надо войти!</h2></div>
+  <UsersReview></UsersReview>
 </template>
 
-<script></script>
+<script>
+import AddReviewView from './Review/AddReviewView.vue';
+import UsersReview from "./Review/UsersReview.vue";
+
+export default {
+  name: "ReviewView",
+  components: {
+    AddReviewView,
+    UsersReview,
+  },
+  data() {
+    return {
+      user: localStorage.getItem('user'),
+    };
+  },
+};
+</script>

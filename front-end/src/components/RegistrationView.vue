@@ -15,7 +15,7 @@
   </div>
 
   <div v-else>
-    <h1>Вы вошли</h1>
+    <h1>Вы уже вошли</h1>
   </div>
 </template>
 
@@ -67,7 +67,7 @@ export default {
           this.password = "";
           this.email = "";
 
-          this.$router.push({ name: "Chat" });
+          this.$router.push({ name: "Home" });
         });
     },
     check() {

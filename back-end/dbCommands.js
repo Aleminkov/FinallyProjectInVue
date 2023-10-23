@@ -18,13 +18,23 @@ const startCommand3 = `CREATE TABLE IF NOT EXISTS chat (
     messages TEXT NOT NULL
 );`;
 
-const findUserCommand = `Select * FROM users WHERE email = ? AND password = ?`;
+const findUserCommand = `SELECT * FROM users WHERE email = ? AND password = ?`;
 
 const createUserCommand = `INSERT INTO users(name, email, password) VALUES(?, ?, ?)`;
 
-const findEmailCommand = `Select * FROM users WHERE email = ?`;
+const findEmailCommand = `SELECT * FROM users WHERE email = ?`;
 
-const checkUserCommand = `Select * FROM users WHERE name = ?`;
+const checkUserCommand = `SELECT * FROM users WHERE name = ?`;
+
+const selectAllReview = `SELECT * FROM review`;
+
+const addReviewCommand = `INSERT INTO review(name,stars,text) VALUES(?,?,?)`;
+
+const addNewMessageCommand = `INSERT INTO chat(name,messages) VALUES(?,?)`;
+
+const getMessagesCommand = `SELECT * FROM chat`;
+
+const deleteMessageCommand = `DELETE FROM chat WHERE id = ?`;
 
 module.exports = {
   startCommand,
@@ -34,4 +44,9 @@ module.exports = {
   createUserCommand,
   findEmailCommand,
   checkUserCommand,
+  selectAllReview,
+  addReviewCommand,
+  addNewMessageCommand,
+  getMessagesCommand,
+  deleteMessageCommand,
 };

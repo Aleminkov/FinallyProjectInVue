@@ -22,7 +22,9 @@
         >Войти</router-link
       >
     </div>
-    <div v-else @click="logout">Выйти</div>
+    <div v-else>
+      <button @click="logout">Выйти</button>
+    </div>
   </nav>
 </template>
 
@@ -31,16 +33,17 @@ export default {
   name: "NavigationView",
   data() {
     return {
-      user:''
+      user: localStorage.getItem("user"),
     };
   },
-  computed(){
-    this.user = localStorage.getItem('user')
+  updated() {
+    this.user = localStorage.getItem("user");
   },
   methods: {
-    logout(){
-      localStorage.removeItem('user')
-    }
+    logout() {
+      localStorage.removeItem("user");
+      location.reload();
+    },
   },
 };
 </script>
