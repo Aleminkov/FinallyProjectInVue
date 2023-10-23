@@ -5,7 +5,9 @@ class chatController {
   
   //Добавляет сообщение
   async addMessages(req, res) {
-    const { message, name } = req.body;
+
+    const { name, message } = req.body;
+
     try {
       await createNewMessage(name, message);
 
