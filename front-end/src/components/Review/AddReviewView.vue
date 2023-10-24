@@ -1,6 +1,6 @@
 <template>
   <h3>{{ msg }}</h3>
-  <form @submit.prevent>
+  <form @submit.prevent class="container">
     <textarea v-model="desc"> </textarea>
 
     <div class="rating-area">
@@ -74,8 +74,9 @@ export default {
       this.stars = number;
     },
     check() {
-        if (this.stars === "" && this.desc === "") {
-        this.msg = "Вы не поставили звезду и поле с описанием не должно быть пустым!";
+      if (this.stars === "" && this.desc === "") {
+        this.msg =
+          "Вы не поставили звезду и поле с описанием не должно быть пустым!";
         return false;
       } else if (this.desc === "") {
         this.msg = "Поле с описанием не должно быть пустым!";
@@ -90,10 +91,9 @@ export default {
       return true;
     },
     createNewReview() {
-        
-        if(!this.check()){
-            return ;
-        }
+      if (!this.check()) {
+        return;
+      }
       const url = "http://localhost:4000/api/review";
       const head = {
         Accept: "application/json",
@@ -109,13 +109,99 @@ export default {
         method: "POST",
         headers: head,
         body: JSON.stringify(data),
-      }).then(res=>res.json()).then(res=>{
-        if(res.result === false){
-            return
-        }
-        location.reload()
-      });
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.result === false) {
+            return;
+          }
+          location.reload();
+        });
     },
   },
 };
 </script>
+
+<style scoped>
+textarea{
+  width: 500px;
+  height: 100px;
+}
+
+button {
+  width: 200px;
+  margin: auto;
+  margin-top: 10px;
+  border: 0px;
+  background-color: bisque;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-top-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+}
+
+.container{
+  position: relative;
+  width: 1000px;
+	margin: auto;
+  text-align: center;
+}
+.rating-area {
+  overflow: hidden;
+
+  width: 265px;
+
+  margin: 0 auto;
+}
+
+.rating-area:not(:checked) > input {
+  display: none;
+}
+
+.rating-area:not(:checked) > label {
+  float: right;
+
+  width: 42px;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  font-size: 32px;
+
+  line-height: 32px;
+
+  color: lightgrey;
+
+  text-shadow: 1px 1px #bbb;
+}
+
+.rating-area:not(:checked) > label:before {
+  content: "★";
+}
+
+.rating-area > input:checked ~ label {
+  color: bisque;
+
+  text-shadow: 1px 1px #c60;
+}
+
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+  color: bisque;
+}
+
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+  color: bisque;
+
+  text-shadow: 1px 1px goldenrod;
+}
+
+.rate-area > label:active {
+  position: relative;
+}
+</style>

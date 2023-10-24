@@ -1,15 +1,25 @@
 <template>
-  <div v-if="!user">
+  <div v-if="!user" style="text-align: center">
     <form @submit.prevent>
       <h3>{{ msg }}</h3>
+
+      <label for="">Email:</label>
       <input type="email" placeholder="Введите email" v-model="email" />
 
+      <label for="">Пароль</label>
       <input type="password" placeholder="Введите пароль" v-model="password" />
 
       <button @click="login">Войти</button>
     </form>
 
-    <router-link :to="{ name: 'RegistrationView' }"
+    <router-link
+      :to="{ name: 'RegistrationView' }"
+      style="
+        text-decoration: none;
+        color: blue;
+        text-align: center;
+        margin-top: 100px;
+      "
       >Зарегестрироваться</router-link
     >
   </div>
@@ -96,3 +106,36 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  width: 1000px;
+  height: 200px
+}
+input {
+  width: 400px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: bisque;
+  border: 0px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+button {
+  width: 200px;
+  margin: auto;
+  margin-top: 10px;
+  border: 0px;
+  background-color: bisque;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-top-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+}
+</style>

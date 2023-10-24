@@ -1,15 +1,18 @@
 <template>
-  <NavigationView></NavigationView>
-  <router-view></router-view>
+
+    <NavigationView></NavigationView>
+
+    <router-view></router-view>
+
 </template>
 
 <script>
-import NavigationView from './components/Navigation.vue';
+import NavigationView from "./components/Navigation.vue";
 
 export default {
-    name: "App",
-    components: { NavigationView }
+  name: "App",
+  components: { NavigationView },
 };
 </script>
 
-<style></style>
+<style scoped></style>

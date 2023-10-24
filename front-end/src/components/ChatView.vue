@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <div v-if="isLoading">
       <strong>Загрузка...</strong>
     </div>
-    <div v-else>
+    <div v-else class="containerMessage">
       <div v-for="message in messages" :key="message.id">
         {{ message.name }}: {{ message.messages }}
         <img
@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div v-if="user">
+    <div v-if="user" class="createMessage">
       <h5>{{ err }}</h5>
       <div>
         <input type="text" v-model="textMessage" />
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div v-else>
+    <div v-else class="dontAuth" style="text-align: center;">
       <h3>Вы не вошли!</h3>
     </div>
   </div>
@@ -132,9 +132,33 @@ export default {
             messages: this.textMessage,
           });
 
+          this.err = ''
+
           this.textMessage = "";
         });
     },
   },
 };
 </script>
+
+
+<style scoped>
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.containerMessage{
+    background-color: blanchedalmond;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    border: 3px solid black;
+    overflow:scroll;
+}
+
+.createMessage{
+    margin: auto;
+}
+</style>

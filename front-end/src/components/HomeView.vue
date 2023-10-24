@@ -1,50 +1,62 @@
 <template>
-  <div>
+  <div class="container">
     <div>
       <div>
-        <h1>Aleminkov</h1>
-        <h2>Я изучаю Javascript и знаю немного Python.</h2>
+        <h1>Aleminkov(Алексей)</h1>
+        <h2>Я изучаю Javascript и знаю немного Python. :)</h2>
       </div>
     </div>
 
     <div>
+      <h1>GitHub</h1>
       <div>
-        <h1>GIT</h1>
-
         <img
           src="../img/ava.jpg"
           alt=""
-          style="width: 150px; height: 150px; border-radius: 100px;"
+          style="width: 150px; height: 150px; border-radius: 100px"
         />
 
-        <div>
-          <h3>Репозитории</h3>
-          <h3>Фоловеры</h3>
+        <div class="containerRepositAndFollowers">
+          <div>
+            <h3>Репозитории</h3>
+            <h3>{{ reposit }}</h3>
+          </div>
+          <div>
+            <h3>Фоловеры</h3>
+
+            <h3>{{ follower }}</h3>
+          </div>
         </div>
 
-        <div>
-          <h3>{{ reposit }}</h3>
-          <h3>{{ follower }}</h3>
-        </div>
+        <a href="https://github.com/Aleminkov"
+          ><h4><strong>Узнать больше о GitHub</strong></h4></a
+        >
 
-          <a href="https://github.com/Aleminkov"><h4>Узнать больше</h4></a>
-        
-
-        <div>
+        <div style="margin-top: 40px;">
           <h3>Связь со мной:</h3>
 
           <nav class="iconsContainer">
-            <a href="https://vk.com/aleminkov" style="width: 150px;">
-              <img src="../img/VK_Compact_Logo_(2021-present).svg.png" alt="" style="width: 150px;"
+            <a href="https://vk.com/aleminkov" style="width: 100px">
+              <img
+                src="../img/VK_Compact_Logo_(2021-present).svg.png"
+                alt=""
+                style="width: 100px"
             /></a>
-            <a href="https://t.me/Aleminkov_06" style="width: 150px;">
+            <a href="https://t.me/Aleminkov_06" style="width: 100px">
               <img
                 src="../img/Telegram_2019_Logo.svg.webp"
                 alt=""
-                style="width: 150px"
+                style="width: 100px"
             /></a>
-            <a href="https://steamcommunity.com/id/Aleminkov/" style="width: 150px;">
-              <img src="../img/Steam_icon_logo.svg.png" alt="" style="width: 150px;"/>
+            <a
+              href="https://steamcommunity.com/id/Aleminkov/"
+              style="width: 100px"
+            >
+              <img
+                src="../img/Steam_icon_logo.svg.png"
+                alt=""
+                style="width: 100px"
+              />
             </a>
           </nav>
         </div>
@@ -84,12 +96,27 @@ export default {
 </script>
 
 <style scoped>
-.iconsContainer{
-    width: 1000px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+.iconsContainer {
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.containerRepositAndFollowers{
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
 }
 </style>
