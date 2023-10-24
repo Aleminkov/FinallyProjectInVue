@@ -18,7 +18,7 @@
     <div v-if="user" class="createMessage">
       <h5>{{ err }}</h5>
       <div>
-        <input type="text" v-model="textMessage" />
+        <input type="text" v-model="textMessage" placeholder="Введите сообщение"/>
         <button @click="postNewMessage">Отправить сообщение</button>
       </div>
     </div>
@@ -161,4 +161,29 @@ export default {
 .createMessage{
     margin: auto;
 }
+
+button {
+    margin: auto;
+    margin-top: 10px;
+    border: 0px;
+    background-color: bisque;
+    border-top-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-top-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+  }
+
+  input{
+    margin: auto;
+    margin-top: 10px;
+    background-color: bisque;
+    border: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 10px;
+    width: 350px;
+    height: 40px;
+  }
 </style>
