@@ -1,11 +1,17 @@
 <template>
   <div>
     <div v-if="isLoading">
-        <strong>Загрузка...</strong>
+      <strong>Загрузка...</strong>
     </div>
     <div v-else>
       <div v-for="message in messages" :key="message.id">
         {{ message.name }}: {{ message.messages }}
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/2101/2101345.png"
+          alt=""
+          style="width: 15px"
+          @click="removeMessage(message.id)"
+        />
       </div>
     </div>
 
@@ -27,7 +33,7 @@
 export default {
   data() {
     return {
-      messages: "",
+      messages: [],
       textMessage: "",
       err: "",
       user: "",
@@ -56,10 +62,33 @@ export default {
         this.messages = res.messages;
 
         this.isLoading = false;
-
       });
   },
   methods: {
+    removeMessage(id) {
+      const url = "http://localhost:4000/api/chat/deleteMessage";
+      const head = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+
+      const data = {
+        id,
+      };
+
+      fetch(url, {
+        method: "DELETE",
+        headers: head,
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.result === false) {
+            return;
+          }
+          this.messages = this.messages.filter((el) => el.id !== id);
+        });
+    },
     check() {
       if (this.textMessage === "") {
         this.err = "Поле с сообщением не должно быть пустым!";

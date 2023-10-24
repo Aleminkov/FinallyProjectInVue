@@ -2,10 +2,8 @@ const ApiError = require("../Error/ApiError");
 const { createNewMessage, getAllMessage, deletMessage } = require("../db");
 
 class chatController {
-  
   //Добавляет сообщение
   async addMessages(req, res) {
-
     const { name, message } = req.body;
 
     try {
@@ -17,7 +15,7 @@ class chatController {
       ApiError.interval(e);
     }
   }
-  
+
   //Отдает сообщения
   async getMessages(req, res) {
     try {
@@ -28,16 +26,16 @@ class chatController {
       ApiError.badRequest(e);
     }
   }
-  
+
   //Удаляет сообщение
   async deleteMessage(req, res) {
-    const {id} = req.body
+    const { id } = req.body;
     try {
-      await deletMessage(id)
-      return res.json({message:'',result:true})
+      await deletMessage(id);
+      return res.json({ message: "", result: true });
     } catch (error) {
       console.log(error);
-      ApiError.badRequest(error)
+      ApiError.badRequest(error);
     }
   }
 }

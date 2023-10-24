@@ -106,9 +106,14 @@ export default {
       };
 
       fetch(url, {
-        method: "GET",
+        method: "POST",
         headers: head,
         body: JSON.stringify(data),
+      }).then(res=>res.json()).then(res=>{
+        if(res.result === false){
+            return
+        }
+        location.reload()
       });
     },
   },
