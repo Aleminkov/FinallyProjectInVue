@@ -6,7 +6,7 @@
       <label for="">Email:</label>
       <input type="email" placeholder="Введите email" v-model="email" />
 
-      <label for="">Пароль</label>
+      <label for="">Пароль:</label>
       <input type="password" placeholder="Введите пароль" v-model="password" />
 
       <button @click="login">Войти</button>
