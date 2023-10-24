@@ -1,8 +1,8 @@
 <template>
-  <div v-if="user">
+  <div v-if="user" >
     <AddReviewView></AddReviewView>
   </div>
-  <div v-else><h2>Чтобы написать отзыв надо войти!</h2></div>
+  <div v-else style="text-align:center;"><h2>Чтобы написать отзыв надо войти!</h2></div>
   <UsersReview></UsersReview>
 </template>
 
