@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align:center;">
+  <div style="text-align: center">
     <div v-if="!loadingReview">Загрузка...</div>
     <div v-else>
       <div v-for="el in arrReviews" :key="el.id" class="container">
@@ -44,7 +44,7 @@ export default {
       .then((res) => res.json())
       .then((res) => {
         this.loadingReview = true;
-        console.log(res);
+
         this.arrReviews = res;
       })
 
@@ -68,7 +68,6 @@ export default {
   width: 1000px;
   margin: auto;
   margin-top: 10px;
-
 }
 
 .parentStar {

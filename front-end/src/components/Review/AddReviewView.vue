@@ -1,6 +1,7 @@
 <template>
-  <h3>{{ msg }}</h3>
+  
   <form @submit.prevent class="container">
+    <h3>{{ msg }}</h3>
     <textarea v-model="desc"> </textarea>
 
     <div class="rating-area">
@@ -67,6 +68,7 @@ export default {
     return {
       stars: 0,
       desc: "",
+      msg:'',
     };
   },
   methods: {
@@ -75,14 +77,13 @@ export default {
     },
     check() {
       if (this.stars === "" && this.desc === "") {
-        this.msg =
-          "Вы не поставили звезду и поле с описанием не должно быть пустым!";
+        this.msg = "Вы не поставили звезду и поле с описанием не должно быть пустым!";
         return false;
       } else if (this.desc === "") {
         this.msg = "Поле с описанием не должно быть пустым!";
 
         return false;
-      } else if (this.stars === "") {
+      } else if (this.stars === 0) {
         this.msg = "Вы не поставили звезду!";
 
         return false;

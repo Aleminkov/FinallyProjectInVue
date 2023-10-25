@@ -108,6 +108,7 @@ export default {
 </script>
 
 <style scoped>
+
 form {
   display: flex;
   flex-direction: column;
@@ -116,6 +117,7 @@ form {
   width: 1000px;
   height: 200px
 }
+
 input {
   width: 400px;
   margin: auto;
@@ -126,7 +128,9 @@ input {
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  height: 25px;
 }
+
 button {
   width: 200px;
   margin: auto;

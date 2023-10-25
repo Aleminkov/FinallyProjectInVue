@@ -15,7 +15,7 @@
       Уже зарегестрировались?
       <router-link
         :to="{ name: 'LoginView' }"
-        style="text-decoration: none; color: blue;"
+        style="text-decoration: none; color: blue"
         >Войти</router-link
       >
     </h4>
@@ -70,7 +70,7 @@ export default {
           this.password = "";
           this.email = "";
 
-          this.$router.push({ name: "Home" });
+          location.reload();
         });
     },
     check() {
@@ -112,6 +112,7 @@ form {
   margin: auto;
   width: 1000px;
 }
+
 input {
   width: 400px;
   margin: auto;
@@ -122,8 +123,10 @@ input {
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  height: 25px;
 }
-button{
+
+button {
   width: 200px;
   margin: auto;
   margin-top: 10px;
@@ -134,5 +137,4 @@ button{
   border-top-left-radius: 80px;
   border-bottom-right-radius: 80px;
 }
-
 </style>
