@@ -156,7 +156,7 @@ export default {
     height: 500px;
     margin: auto;
     border: 3px solid black;
-    overflow:scroll;
+    overflow:auto;
 }
 
 .createMessage{
