@@ -10,6 +10,7 @@
           src="https://cdn-icons-png.flaticon.com/512/2101/2101345.png"
           alt=""
           style="width: 15px"
+          v-show="user"
           @click="removeMessage(message.id)"
         />
       </div>
