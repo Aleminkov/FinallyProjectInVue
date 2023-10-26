@@ -26,7 +26,7 @@ class userController {
 
     const findEmail = await checkEmail(email);
     
-    if (findEmail === "") {
+    if (findEmail !== "") {
       return next(
         ApiError.badRequest("Пользователь с таким email уже существует!")
       );
@@ -34,7 +34,7 @@ class userController {
 
     const findName = await checkUser(name);
 
-    if (findName === "") {
+    if (findName !== "") {
       return next(
         ApiError.badRequest("Пользователь с таким именем уже существует")
       );

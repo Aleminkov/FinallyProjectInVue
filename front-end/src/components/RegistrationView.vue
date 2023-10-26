@@ -62,7 +62,6 @@ export default {
         .then((res) => res.json())
         .then((res) => {
           if (!res.result) {
-            console.log(res);
             return (this.msg = res.message);
           }
           localStorage.setItem("user", this.login);

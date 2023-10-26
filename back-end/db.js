@@ -16,7 +16,6 @@ const {
 } = require("./dbCommands");
 
 class Database {
- 
   //Для старта бэка
   async start() {
     try {
@@ -28,7 +27,7 @@ class Database {
       console.log(error);
     }
   }
-  
+
   //Ищет пользователя для логина
   async findUser(email, password) {
     return new Promise((resolve, reject) => {
@@ -40,7 +39,7 @@ class Database {
       });
     });
   }
-  
+
   //Создает пользователя
   async createUser(name, email, password) {
     return new Promise((reslove, reject) => {
@@ -56,7 +55,7 @@ class Database {
   //Смотри нет ли такого же email
   async checkEmail(email) {
     return new Promise((reslove, reject) => {
-      db.all(findEmailCommand, [email], (err, result) => {
+      db.get(findEmailCommand, [email], (err, result) => {
         if (err) {
           reject(err);
         }
@@ -64,11 +63,11 @@ class Database {
       });
     });
   }
-  
+
   //Проверяет есть ли такое имя
   async checkUser(name) {
     return new Promise((reslove, reject) => {
-      db.all(checkUserCommand, [name], (err, result) => {
+      db.get(checkUserCommand, [name], (err, result) => {
         if (err) {
           reject(err);
         }
@@ -76,7 +75,7 @@ class Database {
       });
     });
   }
-  
+
   //Получает все отзывы
   async getAllReview() {
     return new Promise((reslove, reject) => {
@@ -88,7 +87,7 @@ class Database {
       });
     });
   }
- 
+
   //Добавляет отзывы
   async addReview(name, star, desc) {
     return new Promise((reslove, reject) => {
@@ -100,7 +99,7 @@ class Database {
       });
     });
   }
- 
+
   //Добавляет сообщение в чат
   async createNewMessage(name, message) {
     return new Promise((reslove, reject) => {
@@ -112,7 +111,7 @@ class Database {
       });
     });
   }
- 
+
   //Получает все сообщения
   async getAllMessage() {
     return new Promise((reslove, reject) => {
@@ -127,14 +126,14 @@ class Database {
 
   //Удаляет сообщение
   async deletMessage(id) {
-    return new Promise((reslove,reject)=>{
-      db.run(deleteMessageCommand,[id],(err,result)=>{
-        if(err){
-          reject(err)
+    return new Promise((reslove, reject) => {
+      db.run(deleteMessageCommand, [id], (err, result) => {
+        if (err) {
+          reject(err);
         }
-        reslove(result)
-      })
-    })
+        reslove(result);
+      });
+    });
   }
 }
 
