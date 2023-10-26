@@ -37,6 +37,11 @@ export default {
     this.user = localStorage.getItem("user");
   },
   methods: {
+    validEmail: function (email) {
+      var re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
     registration() {
       const checkInput = this.check();
       if (!checkInput) {
@@ -89,11 +94,8 @@ export default {
         this.msg = "Поле с паролем не должно быть пустым!";
 
         return false;
-      } else if (
-        this.email.indexOf("@") === -1 ||
-        this.email.indexOf(".com") === -1
-      ) {
-        this.msg = "У вас введен не email!";
+      } else if (!this.validEmail(this.email)) {
+        this.msg = "Уберите лишние символы с email";
         return false;
       }
 
